@@ -1,0 +1,17 @@
+export VESPA_SAMPLE_APPS=`pwd`/vespa
+
+docker run --detach --name vespa --hostname vespa-container   --volume $VESPA_SAMPLE_APPS:/vespa-sample-apps --publish 8080:8080 vespaengine/vespa
+
+docker exec vespa bash -c 'curl -s --head http://localhost:19071/ApplicationStatus'
+
+docker exec vespa bash -c '/opt/vespa/bin/vespa-deploy prepare /vespa-sample-apps/src/main/application/ && /opt/vespa/bin/vespa-deploy activate'
+
+curl -s --head http://localhost:8080/ApplicationStatus
+
+curl -H "Content-Type:application/json" --data-binary @${VESPA_SAMPLE_APPS}/src/test/resources/1.json http://localhost:8080/document/v1/url/url/docid/1
+curl -H "Content-Type:application/json" --data-binary @${VESPA_SAMPLE_APPS}/src/test/resources/2.json http://localhost:8080/document/v1/url/url/docid/2
+curl -H "Content-Type:application/json" --data-binary @${VESPA_SAMPLE_APPS}/src/test/resources/3.json http://localhost:8080/document/v1/url/url/docid/3
+
+...
+
+docker rm -f vespa

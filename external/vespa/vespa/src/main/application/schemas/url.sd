@@ -1,0 +1,36 @@
+
+schema url {
+
+    document url {
+
+        field url type string {
+            indexing: summary | index
+        }
+
+        field key type string {
+            indexing: summary | attribute
+        }
+
+        field status type string {
+            indexing: summary | attribute
+        }
+
+        field metadata type map<string,array<string>> {
+            indexing: summary
+        }
+
+        field next_fetch_date type long {
+            indexing: attribute
+        }
+
+    }
+
+    rank-profile url inherits default {
+
+        first-phase {
+            expression:nativeRank(next_fetch_date, key, url)
+        }
+
+    }
+
+}

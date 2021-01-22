@@ -1,0 +1,19 @@
+{  "fields": {
+    "url": "http://www.baden-powell.hackney.sch.uk/news-archive-2/calendar/action~agenda/cat_ids~58,59/request_format~json/",
+    "status": "FETCHED",
+    "metadata": {
+      "url%2Epath": [
+        "http://baden-powell.hackney.sch.uk",
+        "http://www.baden-powell.hackney.sch.uk/",
+        "http://www.baden-powell.hackney.sch.uk/parents/parents-events/",
+        "http://www.baden-powell.hackney.sch.uk/news-archive-2/calendar/action~agenda/cat_ids~61,58/request_format~json/",
+        "http://www.baden-powell.hackney.sch.uk/news-archive-2/calendar/action~agenda/cat_ids~61,58,59/request_format~json/"
+      ],
+      "depth": [
+        "5"
+      ]
+    },
+    "key": "baden-powell.hackney.sch.uk",
+    "next_fetch_date": "4102358400"
+  }
+}
