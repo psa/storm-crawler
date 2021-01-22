@@ -87,12 +87,13 @@ public abstract class AbstractHttpProtocol implements Protocol {
                 ConfUtils.getString(conf, "http.agent.version"),
                 ConfUtils.getString(conf, "http.agent.description"),
                 ConfUtils.getString(conf, "http.agent.url"),
-                ConfUtils.getString(conf, "http.agent.email"));
+                ConfUtils.getString(conf, "http.agent.email"),
+                ConfUtils.getString(conf, "http.agent.renderer"));
     }
 
     private static String getAgentString(String agentName,
             String agentVersion, String agentDesc, String agentURL,
-            String agentEmail) {
+            String agentEmail, String agentRenderer) {
 
         StringBuilder buf = new StringBuilder();
 
@@ -127,6 +128,11 @@ public abstract class AbstractHttpProtocol implements Protocol {
             }
 
             buf.append(")");
+
+        }
+        if (StringUtils.isNotBlank(agentRenderer)) {
+            buf.append(" ");
+            buf.append(agentRenderer);
         }
 
         return buf.toString();
